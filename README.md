@@ -11,6 +11,7 @@ Welcome to my personal website repository! As a data scientist and product manag
 ## Running the Application
 
 ### Development
+Uncomment the `personal-website-dev` service in `docker-compose.yml`
 ```bash
 # Run development server with hot-reload
 docker-compose up personal-website-dev
