@@ -1,29 +1,31 @@
-# React Nice Resume :page_with_curl:
+# Shiv's Personal Website
 
-### [LIVE DEMO](https://nordicgiant2.github.io/react-nice-resume-page/index.html)
+Welcome to my personal website repository! As a data scientist and product manager who dabbles in front-end development as a hobby, I built this site using React to showcase my professional experience and projects. While I primarily work with data and ML/AI in my day job, I enjoy exploring web development in my spare time.
 
-![img](https://github.com/nordicgiant2/react-nice-resume/blob/master/public/images/img.jpg?raw=true)
+## Tech Stack
+- **React**: Built using React for a responsive and interactive user experience
+- **Docker**: Containerized for consistent development and deployment environments
+- **CSS/HTML**: Custom styling and responsive design
+- **React Components**: Modular components for portfolio, resume, and contact sections
 
-# About [`particles-bg`](https://github.com/lindelof/particles-bg) Library
-#### This project uses the react particle background component library [https://github.com/lindelof/particles-bg](https://github.com/lindelof/particles-bg). It's very simple. Anyone can be a Musketeer with it.
+## Running the Application
 
-![img](https://github.com/lindelof/particles-bg/raw/master/image/03.jpg?raw=true)
-
-# Description
-This project forks from [https://github.com/tbakerx/react-resume-template](https://github.com/tbakerx/react-resume-template), I made some modifications and adjustments, thanks to the [author](https://github.com/tbakerx).
-
-![img](https://github.com/nordicgiant2/react-nice-resume/blob/master/public/images/img2.jpg?raw=true)
-
-# Run Project
-### 1. Clone the project
-
-### 2. Run the project
-```shell
-npm i
-npm start
+### Development
+```bash
+# Run development server with hot-reload
+docker-compose up personal-website-dev
 ```
+The development server will run on `http://localhost:3000` with hot-reload enabled for real-time updates while coding.
 
-### 3. Build
-```shell
-npm run build
+### Production
+```bash
+# Run production build
+docker-compose up personal-website
 ```
+The production build will be served on `http://localhost:80` using a lightweight Nginx server.
+
+## About This Project
+This website serves as both my professional portfolio and a learning project for front-end development. While I'm not a front-end developer by trade (I spend most of my time with Python, ML models, and data pipelines!), I believe in the value of understanding different aspects of software development. This project has been a fun way to keep my React skills sharp while maintaining a professional web presence.
+
+Feel free to explore the code, and don't hesitate to reach out if you have any questions or suggestions!
+

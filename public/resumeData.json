@@ -1,46 +1,30 @@
 {
   "main": {
-    "name":"Nordic-Giant Project",
-    "description":"I am a web development engineer and I use react and vue.js to develop pages. This project is a resume template that can be used as the project home page or resume page",
-    "image":"profilepic.jpg",
-    "bio":"Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
+    "name":"Shiv Palit",
+    "description":"I am a data scientist with professional experience building large-scale ML/AI solutions, developing data platforms, and driving customer experience analytics across media, consulting, and investment sectors",
+    "image":"profilepic.jpeg",
+    "bio":"I'm a data scientist with a product mindset, passionate about building scalable AI/ML solutions that unlock insights and drive impact. Currently at Warner Bros. Discovery, I lead the development of machine learning models and data platforms that power customer experience analytics across global streaming brands. I enjoy working at the intersection of data engineering, modeling, and product strategy - translating messy real-world problems into clean, efficient systems.\n\nMy toolkit includes Python, PyTorch, SQL, Airflow, AWS, Databricks, and Snowflake, and I'm especially comfortable working with LLMs, clustering & classification algorithms, and streamlining complex pipelines. I love designing intuitive tools that make data accessible to everyone, from analysts to executives. \n\nCurious by nature and collaborative by default, I thrive in fast-paced environments where I can work cross-functionally, mentor others, and continuously learn. Whether it's scaling up a data platform or experimenting with a new model architecture, I'm always looking for ways to make data more actionable and impactful.",
     "contactmessage":"Here is where you should write your message to readers to have them get in contact with you.",
-    "email": "youremailhere@gmail.com",
-    "phone": "555-555-5555",
-    "github":"https://github.com/nordicgiant2/react-nice-resume",
-    "project":"https://github.com/nordicgiant2/react-nice-resume",
+    "email": "shivpalit@gmail.com",
+    "phone": "912-334-6950",
+    "github":"https://github.com/shivpalit",
+    "linkedin":"https://www.linkedin.com/in/shivpalit/",
     "address":{
       "street":"(Your Street)",
       "city":"(Your City)",
       "state":"(Your State)",
       "zip": "(Your Zip/Postal Code)"
     },
-    "website": "http://www.timbakerdev.com",
-    "resumedownload":"http://timbakerdev.com",
+    "resumedownload":"./documents/ShivPalitResume.pdf",
     "social":[
       {
-        "name":"facebook",
-        "url":"https://github.com/nordicgiant2/react-nice-resume",
-        "className":"fa fa-facebook"
-      },
-      {
-        "name":"twitter",
-        "url":"http://twitter.com",
-        "className":"fa fa-twitter"
-      },
-      {
         "name":"linkedin",
-        "url":"https://www.linkedin.com/in/tim-baker-8420009a/",
+        "url":"https://www.linkedin.com/in/shivpalit/",
         "className":"fa fa-linkedin"
       },
       {
-        "name":"instagram",
-        "url":"http://instagram.com/tbaker_x",
-        "className":"fa fa-instagram"
-      },
-      {
         "name":"github",
-        "url":"https://github.com/nordicgiant2/react-nice-resume",
+        "url":"https://github.com/shivpalit",
         "className":"fa fa-github"
       }
     ]
@@ -49,30 +33,56 @@
     "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
     "education":[
       {
-        "school":"University?",
-        "degree":"Masters in Beer tasting",
-        "graduated":"April 2017",
-        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        "school":"Johns Hopkins University",
+        "degree":"M.S. in Data Science",
+        "graduated":"2022 - 2025",
+        "description":"<strong>Relevant Coursework:</strong> Data Engineering Principles & Practice, Graph Theory, Information Retrieval, Intro to Machine Learning, Probability & Stochastic Processes, Statistical Models & Regression"
       },
       {
-        "school":"School #1 Maybe College?",
-        "degree":"What did you study 101",
-        "graduated":"March 2013",
-        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        "school":"Davidson College",
+        "degree":"B.A. in Economics, Minor in Data Science",
+        "graduated":"2015 - 2019",
+        "description":"<strong>Relevant Coursework:</strong> Applied Research Design & Data Analysis, Data Science, Data Structures, Econometrics, Financial Economics, Macroeconomics, Microeconomics, Programming & Problem Solving, Statistics & Basic Econometrics"
       }
     ],
     "work":[
       {
-        "company":"Awesome Design Studio",
-        "title":"Senior UX God ",
-        "years":"March 2018 - Present",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "company": "Warner Bros. Discovery",
+        "title": "Senior Product Manager, CX Data & AI",
+        "years": "June 2023 - Present",
+        "description": "Leading Warner Bros. Discovery's CX data ecosystem across major streaming brands, managing data products and integrating insights from 10K daily customer contacts. Developed and scaled ML/AI solutions including LLM-based classification and clustering models, achieving significant efficiency gains and cost savings. Built enterprise-wide data infrastructure using Airflow, Databricks, and Looker to deliver real-time analytics and support C-suite decision-making."
       },
       {
-        "company":"Super Cool Studio",
-        "title":"Junior bug fixer",
-        "years":"March 2017 - February 2018",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "company": "DAS42",
+        "title": "Associate Analytics Consultant",
+        "years": "October 2021 - June 2023",
+        "description": "Led implementation of Looker BI platform for B2C services client, driving 285% subscription revenue growth through advanced data modeling and analytics. Developed comprehensive subscription analytics and forecasting models using SQL and Python, while partnering with executive leadership to define KPIs and optimize data infrastructure. Directed integration of multiple data sources into centralized warehouse using GCP and Airflow."
+      },
+      {
+        "company": "Pura Vida Investments",
+        "title": "Data Science Engineer",
+        "years": "August 2020 - October 2021",
+        "description": "Engineered automated ETL pipelines and analytics dashboards processing 100K+ daily data points from 25+ alternative sources, saving analysts 6 hours daily. Developed clustering algorithms and sentiment analysis tools to identify trading patterns and track public opinion on portfolio companies. Created proprietary Bloomberg application for analyzing forward valuation metrics and monitoring business activity through non-traditional data sources."
+      }
+    ],
+    "certifications":[
+      {
+        "name": "Apache Airflow Fundamentals",
+        "issuer": "Astronomer",
+        "issued": "Issued November 2022",
+        "description": "Proficient in creating, managing, and monitoring DAGs and tasks on Apache Airflow."
+      },
+      {
+        "name": "LookML Developer",
+        "issuer": "Looker",
+        "issued": "Issued November 2022",
+        "description": "Proficient in model management, data security requirements, LookML objects, and maintaining LookML project health."
+      },
+      {
+        "name": "SnowPro Core",
+        "issuer": "Snowflake",
+        "issued": "Issued April 2022",
+        "description": "Proficient in cloud data warehousing and necessary knowledge to design, develop, and manage secure, scalable Snowflake solutions."
       }
     ],
     "skills":[
@@ -131,54 +141,6 @@
         "category":"A React based resume website template",
         "image":"04.jpg",
         "url":"http://www.timbakerdev.com"
-      },
-      {
-        "title":"Smirkspace",
-        "category":"(MVP Only) A React and Meteor based chat University project.",
-        "image":"05.jpg",
-        "url":"http://www.smirkspace.com"
-      },
-      {
-        "title":"Canadian Wanderlust",
-        "category":"My Travel Blog for my post-university travels",
-        "image":"06.jpg",
-        "url":"https://www.canadianwanderlust.com"
-      },
-      {
-        "title":"Fury Fighting Gear",
-        "category":"(offline now) A fighting gear company I started",
-        "image":"01.jpg",
-        "url":"http://www.timbakerdev.com"
-      },
-      {
-        "title":"Original Thai Food",
-        "category":"Website I built for a restaurant I like in Thailand",
-        "image":"02.jpg",
-        "url":"http://www.timbakerdev.com/originalthaifood.github.io"
-      },
-      {
-        "title":"Original Thai Food",
-        "category":"Website I built for a restaurant I like in Thailand",
-        "image":"03.jpg",
-        "url":"http://www.timbakerdev.com/originalthaifood.github.io"
-      },
-      {
-        "title":"Resume Website",
-        "category":"A React based resume website template",
-        "image":"04.jpg",
-        "url":"http://www.timbakerdev.com"
-      },
-      {
-        "title":"Smirkspace",
-        "category":"(MVP Only) A React and Meteor based chat University project.",
-        "image":"05.jpg",
-        "url":"http://www.smirkspace.com"
-      },
-      {
-        "title":"Canadian Wanderlust",
-        "category":"My Travel Blog for my post-university travels",
-        "image":"06.jpg",
-        "url":"https://www.canadianwanderlust.com"
       }
     ]
   }

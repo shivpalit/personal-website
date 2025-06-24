@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Production service (nginx serving built files)
+  personal-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: personal-website
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - personal-website-network
+
+  # Development service (React dev server with hot-reloading)
+  personal-website-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: personal-website-dev
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - personal-website-network
+
+networks:
+  personal-website-network:
+    driver: bridge 

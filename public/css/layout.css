@@ -202,9 +202,11 @@ ul#nav li.current a { color: #fe6928; }
 }
 #about .profile-pic {
    position: relative;
-   width: 120px;
-   height: 120px;
+   width: 150px;
+   height: 150px;
    border-radius: 100%;
+   object-fit: cover;
+   object-position: center;
 }
 #about .contact-details { width: 41.66667%; }
 #about .download {
@@ -1017,8 +1019,15 @@ footer .social-links li:first-child { margin-left: 0; }
    margin-right: 15px;
 }
 .project-btn{
-   background-color: #1abc9c !important;
+   background-color: #2d64bc !important;
 }
 .github-btn{
    background-color: #34495e !important;
+}
+
+.header-bg{
+   position: relative;
+   background-color: #000000;
+   z-index: 1;
+   min-height: 100vh;
 }

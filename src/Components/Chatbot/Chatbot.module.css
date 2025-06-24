@@ -1,0 +1,88 @@
+.chatbotContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.chatbotHeader {
+  background-color: #376B7E;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
+.minimizeButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.chatbotContent {
+  height: 400px;
+  position: relative;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-container) {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-inner-container) {
+  height: 80%;
+  background-color: #fff;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-message-container) {
+  height: calc(100% - 85px) !important;
+  overflow-y: auto;
+  margin-bottom: 85px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-input-container) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #f1f1f1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar) {
+  width: 6px;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar-track) {
+  background: #f1f1f1;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb) {
+  background: #888;
+  border-radius: 3px;
+}
+
+/* Ensure bot messages are fully visible */
+.chatbotContent :global(.react-chatbot-kit-chat-bot-message-container) {
+  margin-bottom: 15px;
+}
+
+/* Ensure user messages are fully visible */
+.chatbotContent :global(.react-chatbot-kit-user-chat-message-container) {
+  margin-bottom: 15px;
+} 

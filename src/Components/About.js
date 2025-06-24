@@ -24,25 +24,25 @@ class About extends Component {
               <img
                 className="profile-pic"
                 src={profilepic}
-                alt="Nordic Giant Profile Pic"
+                alt="Shiv Palit Profile Pic"
               />
             </div>
             <div className="nine columns main-col">
               <h2>About Me</h2>
 
-              <p>{bio}</p>
+              <p style={{ whiteSpace: 'pre-wrap' }}>{bio}</p>
               <div className="row">
                 <div className="columns contact-details">
                   <h2>Contact Details</h2>
                   <p className="address">
                     <span>{name}</span>
                     <br />
-                    <span>
+                    {/* <span>
                       {street}
                       <br />
                       {city} {state}, {zip}
                     </span>
-                    <br />
+                    <br /> */}
                     <span>{phone}</span>
                     <br />
                     <span>{email}</span>
@@ -50,7 +50,7 @@ class About extends Component {
                 </div>
                 <div className="columns download">
                   <p>
-                    <a href={resumeDownload} className="button">
+                    <a href={resumeDownload} className="button" download="ShivPalitResume.pdf">
                       <i className="fa fa-download"></i>Download Resume
                     </a>
                   </p>
