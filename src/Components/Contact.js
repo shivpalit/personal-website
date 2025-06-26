@@ -2,15 +2,109 @@ import React, { Component } from "react";
 import { Fade, Slide } from "react-reveal";
 
 class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contactName: "",
+      contactEmail: "",
+      contactSubject: "",
+      contactMessage: "",
+      isLoading: false,
+      isSent: false,
+      error: null,
+      successMessage: null
+    };
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+      error: null,
+      successMessage: null
+    });
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { contactName, contactEmail, contactMessage } = this.state;
+
+    // Basic validation
+    if (!contactName || !contactEmail || !contactMessage) {
+      this.setState({ error: "Please fill in all required fields." });
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactEmail)) {
+      this.setState({ error: "Please provide a valid email address." });
+      return;
+    }
+
+    this.setState({ 
+      isLoading: true, 
+      error: null, 
+      successMessage: null 
+    });
+
+    const apiUrl = process.env.NODE_ENV === 'production'
+      ? '/api/contact'  
+      : 'http://localhost:80/api/contact';
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          message: contactMessage
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        this.setState({
+          successMessage: "Your message was sent successfully!",
+          isSent: true
+        });
+        
+        // Reset form and isSent state after 3 seconds
+        setTimeout(() => {
+          this.setState({
+            isSent: false,
+            contactName: "",
+            contactEmail: "",
+            contactSubject: "",
+            contactMessage: ""
+          });
+        }, 3000);
+      } else {
+        this.setState({ error: data.error || "Failed to send message" });
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      this.setState({ error: "Failed to connect to the server. Please try again later." });
+    } finally {
+      this.setState({ isLoading: false });
+    }
+  }
+
   render() {
     if (!this.props.data) return null;
 
+    const { isLoading, isSent, error, successMessage } = this.state;
     const name = this.props.data.name;
     const street = this.props.data.address.street;
     const city = this.props.data.address.city;
     const state = this.props.data.address.state;
     const zip = this.props.data.address.zip;
     const phone = this.props.data.phone;
+    const email = this.props.data.email;
     const message = this.props.data.contactmessage;
 
     return (
@@ -22,7 +116,6 @@ class Contact extends Component {
                 <span>Get In Touch.</span>
               </h1>
             </div>
-
             <div className="ten columns">
               <p className="lead">{message}</p>
             </div>
@@ -32,7 +125,7 @@ class Contact extends Component {
         <div className="row">
           <Slide left duration={1000}>
             <div className="eight columns">
-              <form action="" method="post" id="contactForm" name="contactForm">
+              <form onSubmit={this.handleSubmit} id="contactForm" name="contactForm">
                 <fieldset>
                   <div>
                     <label htmlFor="contactName">
@@ -40,7 +133,7 @@ class Contact extends Component {
                     </label>
                     <input
                       type="text"
-                      defaultValue=""
+                      value={this.state.contactName}
                       size="35"
                       id="contactName"
                       name="contactName"
@@ -53,8 +146,8 @@ class Contact extends Component {
                       Email <span className="required">*</span>
                     </label>
                     <input
-                      type="text"
-                      defaultValue=""
+                      type="email"
+                      value={this.state.contactEmail}
                       size="35"
                       id="contactEmail"
                       name="contactEmail"
@@ -66,7 +159,7 @@ class Contact extends Component {
                     <label htmlFor="contactSubject">Subject</label>
                     <input
                       type="text"
-                      defaultValue=""
+                      value={this.state.contactSubject}
                       size="35"
                       id="contactSubject"
                       name="contactSubject"
@@ -79,71 +172,58 @@ class Contact extends Component {
                       Message <span className="required">*</span>
                     </label>
                     <textarea
+                      value={this.state.contactMessage}
                       cols="50"
                       rows="15"
                       id="contactMessage"
                       name="contactMessage"
+                      onChange={this.handleChange}
                     ></textarea>
                   </div>
 
                   <div>
-                    <button className="submit">Submit</button>
-                    <span id="image-loader">
-                      <img alt="" src="images/loader.gif" />
-                    </span>
+                    <button 
+                      className="submit"
+                      type="submit"
+                      disabled={isLoading || isSent}
+                    >
+                      {isLoading ? "Sending..." : isSent ? "Sent!" : "Submit"}
+                    </button>
+                    {isLoading && (
+                      <span id="image-loader">
+                        <img alt="" src="images/loader.gif" />
+                      </span>
+                    )}
                   </div>
                 </fieldset>
               </form>
 
-              <div id="message-warning"> Error boy</div>
-              <div id="message-success">
-                <i className="fa fa-check"></i>Your message was sent, thank you!
-                <br />
-              </div>
+              {error && (
+                <div id="message-warning">
+                  {error}
+                </div>
+              )}
+              
+              {successMessage && (
+                <div id="message-success">
+                  <i className="fa fa-check"></i>{successMessage}
+                  <br />
+                </div>
+              )}
             </div>
           </Slide>
 
           <Slide right duration={1000}>
             <aside className="four columns footer-widgets">
               <div className="widget widget_contact">
-                <h4>Address and Phone</h4>
+                <h4>Contact Details</h4>
                 <p className="address">
                   {name}
                   <br />
-                  {street} <br />
-                  {city}, {state} {zip}
+                  {phone}
                   <br />
-                  <span>{phone}</span>
+                  {email}
                 </p>
-              </div>
-
-              <div className="widget widget_tweets">
-                <h4 className="widget-title">Latest Tweets</h4>
-                <ul id="twitter">
-                  <li>
-                    <span>
-                      This is Photoshop's version of Lorem Ipsum. Proin gravida
-                      nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
-                      quis bibendum auctor, nisi elit consequat ipsum
-                      <a href="./">http://t.co/CGIrdxIlI3</a>
-                    </span>
-                    <b>
-                      <a href="./">2 Days Ago</a>
-                    </b>
-                  </li>
-                  <li>
-                    <span>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi
-                      <a href="./">http://t.co/CGIrdxIlI3</a>
-                    </span>
-                    <b>
-                      <a href="./">3 Days Ago</a>
-                    </b>
-                  </li>
-                </ul>
               </div>
             </aside>
           </Slide>

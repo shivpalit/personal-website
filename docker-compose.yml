@@ -1,15 +1,24 @@
 version: '3.8'
 
 services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_personal_website
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - personal-website
+    networks:
+      - personal-website-network
+
   # Production service (nginx serving built files)
   personal-website:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: personal-website
-    ports:
-      - "80:80"
-    restart: unless-stopped
     environment:
       - NODE_ENV=production
     networks:
@@ -30,6 +39,21 @@ services:
       - WATCHPACK_POLLING=true
     volumes:
       - .:/app
+      - /app/node_modules
+    networks:
+      - personal-website-network
+
+  backend-js:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-js
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+    volumes:
+      - ./backend:/app
       - /app/node_modules
     networks:
       - personal-website-network
