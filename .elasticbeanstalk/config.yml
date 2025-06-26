@@ -2,6 +2,8 @@ branch-defaults:
   default:
     environment: shiv-palit-website
     group_suffix: null
+  main:
+    environment: shiv-palit-website
 global:
   application_name: shiv_palit_website
   branch: null
