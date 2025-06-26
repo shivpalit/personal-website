@@ -43,18 +43,18 @@ services:
   #   networks:
   #     - personal-website-network
 
-  backend-js:
+  backend-flask:
     build:
-      context: ./backend
+      context: ./backend-flask
       dockerfile: Dockerfile
-    container_name: backend-js
+    container_name: backend-flask
     environment:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION=${AWS_REGION}
     volumes:
-      - ./backend:/app
-      - /app/node_modules
+      - ./backend-flask:/app
+    restart: unless-stopped
     networks:
       - personal-website-network
 

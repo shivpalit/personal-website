@@ -70,12 +70,27 @@ class Header extends Component {
             <hr />
             <Fade bottom duration={2000}>
               <ul className="social">
-                <a href={linkedin} target="_blank" className="button btn project-btn">
+                <a href={linkedin} target="_blank" className="button btn project-btn" style={{width: '175px'}}>
                   <i className="fa fa-linkedin"></i>LinkedIn
                 </a>
-                <a href={github} target="_blank" className="button btn github-btn">
+                <a href={github} target="_blank" className="button btn github-btn" style={{width: '175px'}}>
                   <i className="fa fa-github"></i>Github
                 </a>
+              </ul>
+            </Fade>
+            <Fade bottom duration={2000}>
+              <ul>
+              <a 
+                className="button btn" 
+                style={{
+                  width: '175px', 
+                  backgroundColor: '#ec723d',
+                  position: 'relative'  // Add this for tooltip positioning
+                }}
+                data-tooltip="Coming Soon!"  // Add this attribute
+              >
+                Assistant
+              </a>
               </ul>
             </Fade>
           </div>

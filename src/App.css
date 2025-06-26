@@ -1,0 +1,34 @@
+
+/* Arrow color and hover states */
+.slick-prev:before,
+.slick-next:before {
+  color: #808080 !important; /* Grey color for the arrow and circle */
+  opacity: 0.75 !important;
+}
+
+button, 
+.button,
+input[type="submit"],
+input[type="button"] {
+  border-radius: 10px !important;  /* You can adjust this value */
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+
