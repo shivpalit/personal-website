@@ -6,8 +6,7 @@ global:
   application_name: shiv_palit_website
   branch: null
   default_ec2_keyname: null
-  default_platform: arn:aws:elasticbeanstalk:us-east-1::platform/Docker running on
-    64bit Amazon Linux 2023/4.3.8
+  default_platform: arn:aws:elasticbeanstalk:us-east-1::platform/Docker running on 64bit Amazon Linux 2023/4.5.2
   default_region: us-east-1
   include_git_submodules: true
   instance_profile: aws-elasticbeanstalk-ec2-role
