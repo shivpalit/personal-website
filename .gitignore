@@ -24,4 +24,6 @@ yarn-error.log*
 notebook.ipynb
 backend-js/
 
+.elasticbeanstalk/app_versions/
+
 *.pyc

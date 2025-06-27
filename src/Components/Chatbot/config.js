@@ -10,7 +10,7 @@ const config = {
       backgroundColor: "#376B7E",
     },
     chatButton: {
-      backgroundColor: "#376B7E",
+      backgroundColor: "#black",
     },
   },
 };
