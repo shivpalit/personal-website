@@ -95,7 +95,7 @@ class Portfolio extends Component {
   componentDidMount() {
     // Fetch GitHub repos when component mounts
     const apiUrl = process.env.NODE_ENV === 'production'
-      ? '/api/gh-repos'
+      ? process.env.REACT_APP_API_URL + '/api/gh-repos'
       : 'http://localhost:80/api/gh-repos';
 
     fetch(apiUrl, {

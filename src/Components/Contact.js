@@ -49,7 +49,7 @@ class Contact extends Component {
     });
 
     const apiUrl = process.env.NODE_ENV === 'production'
-      ? '/api/contact'  
+      ? process.env.REACT_APP_API_URL + '/api/contact'  
       : 'http://localhost:80/api/contact';
 
     try {
