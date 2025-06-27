@@ -18,9 +18,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+      - REACT_APP_API_URL=https://shivpalit.com
     container_name: personal-website
     environment:
-      - NODE_ENV=production
       - REACT_APP_API_URL=https://shivpalit.com
     networks:
       - personal-website-network
