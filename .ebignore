@@ -20,4 +20,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-notebook.ipynb
+*.ipynb
+backend-js/
+.elasticbeanstalk/app_versions/
+*.pyc

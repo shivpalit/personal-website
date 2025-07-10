@@ -15,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       foo: "bar",
-      resumeData: {}
+      resumeData: {},
+      isChatMinimized: true
     };
 
     ReactGA.initialize("UA-110570651-1");
@@ -43,16 +44,28 @@ class App extends Component {
     console.log(process.env.NODE_ENV);
   }
 
+  toggleChat = () => {
+    this.setState(prevState => ({
+      isChatMinimized: !prevState.isChatMinimized
+    }));
+  };
+
   render() {
     return (
       <div className="App">
-        <Header data={this.state.resumeData.main} />
+        <Header 
+          data={this.state.resumeData.main} 
+          setChatMinimized={this.toggleChat}
+        />
         <About data={this.state.resumeData.main} />
         <Resume data={this.state.resumeData.resume} />
         <Portfolio data={this.state.resumeData.portfolio} />
         <Contact data={this.state.resumeData.main} />
         <Footer data={this.state.resumeData.main} />
-        {/* <ChatbotComponent /> */}
+        <ChatbotComponent 
+          isMinimized={this.state.isChatMinimized}
+          setChatMinimized={this.toggleChat}
+        />
       </div>
     );
   }

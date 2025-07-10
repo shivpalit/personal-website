@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ParticlesBg from "particles-bg";
 import Particles from "react-tsparticles";
 import Fade from "react-reveal";
+import chatbotStyles from './Chatbot/Chatbot.module.css';
 
 class Header extends Component {
 
@@ -81,13 +82,9 @@ class Header extends Component {
             <Fade bottom duration={2000}>
               <ul>
               <a 
-                className="button btn" 
-                style={{
-                  width: '175px', 
-                  backgroundColor: '#ec723d',
-                  position: 'relative'  // Add this for tooltip positioning
-                }}
-                data-tooltip="Coming Soon!"  // Add this attribute
+                className={`button btn ${chatbotStyles['assistant-button']}`}
+                // data-tooltip="Coming Soon!"
+                onClick={this.props.setChatMinimized}
               >
                 Assistant
               </a>

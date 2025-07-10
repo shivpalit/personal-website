@@ -5,12 +5,20 @@ const config = {
     createChatBotMessage("Hi! I'm Shiv's assistant. How can I help you today?"),
   ],
   botName: "Assistant",
+  customComponents: {
+    /**  
+     * Replace the default header with an empty fragment  
+     * → this removes the header entirely  
+     */
+    header: () => null
+  },
+  // … your other config …
   customStyles: {
     botMessageBox: {
-      backgroundColor: "#376B7E",
+      backgroundColor: "black",
     },
     chatButton: {
-      backgroundColor: "#black",
+      backgroundColor: "black",
     },
   },
 };

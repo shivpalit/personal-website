@@ -7,16 +7,14 @@ import config from './config';
 import MessageParser from './MessageParser';
 import ActionProvider from './ActionProvider';
 
-const ChatbotComponent = () => {
-  const [isMinimized, setIsMinimized] = useState(false);
-
+const ChatbotComponent = ({ isMinimized, setChatMinimized }) => {
   return (
-    <div className={styles.chatbotContainer}>
-      <div className={styles.chatbotHeader} onClick={() => setIsMinimized(!isMinimized)}>
-        <span>Chat with me</span>
-        <button className={styles.minimizeButton}>
-          {isMinimized ? '+' : '-'}
-        </button>
+    <div className={`${styles.chatbotContainer} ${isMinimized ? styles.minimized : ''}`}>
+      <div className={styles.chatbotHeader} onClick={() => setChatMinimized(!isMinimized)}>
+        <span><i className="fa fa-comments"></i></span>
+          {/* <button className={styles.minimizeButton}>
+            {isMinimized ? '' : '-'}
+          </button> */}
       </div>
       
       <div style={{ display: isMinimized ? 'none' : 'block' }} className={styles.chatbotContent}>

@@ -1,66 +1,97 @@
+.assistant-button {
+  width: 175px;
+  background-color: #ec723d;
+  position: relative;
+}
+
 .chatbotContainer {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  max-width: 300px;
+  max-width: 350px;  
+  width: 350px;    
+  height: 500px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  border-radius: 10px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #fff;
+  transition: width 0.3s ease;  /* Smooth transition for width change */
+}
+
+.minimized {
+  width: auto;  /* or a specific width like 60px */
+  height: auto;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 .chatbotHeader {
-  background-color: #376B7E;
-  padding: 10px;
+  background-color: #ec723d;
+  padding: 10px 20px;  /* Added more horizontal padding */
+  height: 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
   cursor: pointer;
+  white-space: nowrap;  /* Keeps icon from wrapping */
 }
 
-.minimizeButton {
+/* .minimizeButton {
   background: none;
   border: none;
   color: white;
   cursor: pointer;
   font-size: 20px;
   padding: 0 5px;
-}
+} */
 
+/* container for the entire area */
 .chatbotContent {
-  height: 400px;
+  height: calc(100%);
   position: relative;
 }
 
+/* container for the chat header */ 
+/* .chatbotContent :global(.react-chatbot-kit-chat-header){
+  height: 5%;
+  color: black;
+  border-radius: 0;
+} */
+
+/* container for the entire area */
 .chatbotContent :global(.react-chatbot-kit-chat-container) {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
+/* container for the messages area */
 .chatbotContent :global(.react-chatbot-kit-chat-inner-container) {
   height: 80%;
   background-color: #fff;
 }
 
+/* chat message area */
 .chatbotContent :global(.react-chatbot-kit-chat-message-container) {
-  height: calc(100% - 85px) !important;
+  height: 100%;
   overflow-y: auto;
-  margin-bottom: 85px;
-  padding: 10px;
+  margin-bottom: 0px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
+/* chat input area */
 .chatbotContent :global(.react-chatbot-kit-chat-input-container) {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 23%;
   background-color: white;
-  border-top: 1px solid #f1f1f1;
-  padding: 10px;
+  border-top: 1px solid #ec723d;
+  padding: 5px 5px 30px 5px;
   box-sizing: border-box;
 }
 
@@ -79,10 +110,12 @@
 
 /* Ensure bot messages are fully visible */
 .chatbotContent :global(.react-chatbot-kit-chat-bot-message-container) {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 /* Ensure user messages are fully visible */
 .chatbotContent :global(.react-chatbot-kit-user-chat-message-container) {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 } 
