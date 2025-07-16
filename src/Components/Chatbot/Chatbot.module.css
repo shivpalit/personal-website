@@ -2,6 +2,11 @@
   width: 175px;
   background-color: #ec723d;
   position: relative;
+  transition: none;
+}
+
+.assistant-button:hover {
+  background-color: #ec723d !important;
 }
 
 .chatbotContainer {
@@ -13,7 +18,7 @@
   width: 350px;    
   height: 500px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #fff;
   transition: width 0.3s ease;  /* Smooth transition for width change */
@@ -38,27 +43,11 @@
   white-space: nowrap;  /* Keeps icon from wrapping */
 }
 
-/* .minimizeButton {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 0 5px;
-} */
-
 /* container for the entire area */
 .chatbotContent {
   height: calc(100%);
   position: relative;
 }
-
-/* container for the chat header */ 
-/* .chatbotContent :global(.react-chatbot-kit-chat-header){
-  height: 5%;
-  color: black;
-  border-radius: 0;
-} */
 
 /* container for the entire area */
 .chatbotContent :global(.react-chatbot-kit-chat-container) {
@@ -67,55 +56,142 @@
   position: relative;
 }
 
-/* container for the messages area */
-.chatbotContent :global(.react-chatbot-kit-chat-inner-container) {
-  height: 80%;
-  background-color: #fff;
-}
+/* MESSAGE AREA */
 
 /* chat message area */
 .chatbotContent :global(.react-chatbot-kit-chat-message-container) {
-  height: 100%;
+  background-color: #ffffff;
+  height: 80%;
   overflow-y: auto;
   margin-bottom: 0px;
   padding: 5px;
   box-sizing: border-box;
 }
 
-/* chat input area */
+/* Hide bot and user avatars */
+.chatbotContent :global(.react-chatbot-kit-chat-bot-avatar),
+.chatbotContent :global(.react-chatbot-kit-user-avatar) {
+  display: none !important;
+}
+
+/* Ensure bot messages are fully visible */
+.chatbotContent :global(.react-chatbot-kit-chat-bot-message-container) {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Ensure user messages are fully visible */
+.chatbotContent :global(.react-chatbot-kit-user-chat-message-container) {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-bot-message) {
+  background-color: #f2f2f2;
+  color: #000;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  max-width: 80%;
+  margin: 0;
+  position: relative;
+  line-height: 1.2;
+}
+
+.chatbotContent :global(.react-chatbot-kit-user-chat-message) {
+  background-color: #cdcccf;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  max-width: 80%;
+  margin: 0;
+  position: relative;
+  line-height: 1.2;
+}
+
+.chatbotContent :global(.react-chatbot-kit-chat-bot-message-arrow) {
+  border: 8px solid transparent;
+}
+
+.chatbotContent :global(.react-chatbot-kit-user-chat-message-arrow) {
+  border: 8px solid transparent;
+}
+
+/* INPUT AREA */
+
+/* 1) Keep your 25% container, but stretch children to fill it */
 .chatbotContent :global(.react-chatbot-kit-chat-input-container) {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 23%;
-  background-color: white;
-  border-top: 1px solid #ec723d;
-  padding: 5px 5px 30px 5px;
-  box-sizing: border-box;
+
+  height: 20%;             /* you said you need this */
+  padding: 8px 8px;          /* no top/bottom padding */
+  background-color: #ffffff;
+  border-top: 1px solid #a2a2a2;
+  display: flex;
+  align-items: stretch;    /* ← stretch pink & blue to full height */
+  gap: 4px;                /* small gap between them */
 }
 
-.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar) {
-  width: 6px;
+/* 2) Pink “textarea” lookalike */
+.chatbotContent :global(.react-chatbot-kit-chat-input) {
+  flex: 1 1 auto;
+  height: 80%;            /* fill the container’s height */
+  margin: 0px 5px 0px 0px;               /* no margins pushing it around */
+  padding: 12px 12px;         /* horizontal padding only */
+  box-sizing: border-box;  /* include padding in that 100% height */
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
 }
 
-.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar-track) {
-  background: #f1f1f1;
+.chatbotContent :global(.react-chatbot-kit-chat-input:focus) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ec723d;
 }
 
-.chatbotContent :global(.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb) {
-  background: #888;
-  border-radius: 3px;
+/* 3) Blue send‑button */
+.chatbotContent :global(.react-chatbot-kit-chat-btn-send) {
+  flex: 0 0 48px;
+  height: 80%;            /* fill the container’s height */
+  margin: 0px 5px 0px 0px;               /* no margins pushing it around */
+  padding: 12px 12px;         /* horizontal padding only */
+  box-sizing: border-box;  /* include padding in that 100% height */
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
 }
 
-/* Ensure bot messages are fully visible */
-.chatbotContent :global(.react-chatbot-kit-chat-bot-message-container) {
-  margin-bottom: 5px;
-  margin-top: 5px;
+/* 4) swap out the default SVG arrow */
+.chatbotContent :global(.react-chatbot-kit-chat-btn-send-icon) {
+  display: none;
 }
 
-/* Ensure user messages are fully visible */
-.chatbotContent :global(.react-chatbot-kit-user-chat-message-container) {
-  margin-bottom: 5px;
-  margin-top: 5px;
-} 
+.chatbotContent :global(.react-chatbot-kit-chat-btn-send)::after {
+  content: "";
+  display: block;
+  width: 24px;      /* tweak to your desired icon size */
+  height: 24px;
+  background-image: url("https://www.svgrepo.com/download/520931/send-2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+

@@ -83,7 +83,7 @@ class Header extends Component {
               <ul>
               <a 
                 className={`button btn ${chatbotStyles['assistant-button']}`}
-                // data-tooltip="Coming Soon!"
+                data-tooltip="Coming Soon!"
                 onClick={this.props.setChatMinimized}
               >
                 Assistant

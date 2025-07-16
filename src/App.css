@@ -13,7 +13,7 @@ input[type="button"] {
   border-radius: 10px !important;  /* You can adjust this value */
 }
 
-[data-tooltip] {
+/* [data-tooltip] {
   position: relative;
 }
 
@@ -30,5 +30,5 @@ input[type="button"] {
   font-size: 14px;
   white-space: nowrap;
   margin-bottom: 5px;
-}
+} */
 

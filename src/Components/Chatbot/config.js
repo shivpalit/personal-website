@@ -1,4 +1,4 @@
-import { createChatBotMessage } from 'react-chatbot-kit';
+import { createChatBotMessage } from "react-chatbot-kit";
 
 const config = {
   initialMessages: [
@@ -6,21 +6,11 @@ const config = {
   ],
   botName: "Assistant",
   customComponents: {
-    /**  
-     * Replace the default header with an empty fragment  
-     * → this removes the header entirely  
-     */
     header: () => null
   },
-  // … your other config …
   customStyles: {
-    botMessageBox: {
-      backgroundColor: "black",
-    },
-    chatButton: {
-      backgroundColor: "black",
-    },
+    // (you can leave this blank if you’re using your CSS module)
   },
 };
 
-export default config; 
+export default config;
