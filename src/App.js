@@ -50,6 +50,14 @@ class App extends Component {
     }));
   };
 
+  // saveMessages = (messages, htmlString) => {
+  //   localStorage.setItem("chat_messages", JSON.stringify(messages));
+  // };
+
+  // loadMessages = () => {
+  //   return JSON.parse(localStorage.getItem("chat_messages")) || [];
+  // };
+
   render() {
     return (
       <div className="App">
@@ -62,9 +70,11 @@ class App extends Component {
         <Portfolio data={this.state.resumeData.portfolio} />
         <Contact data={this.state.resumeData.main} />
         <Footer data={this.state.resumeData.main} />
-        <ChatbotComponent 
+        <ChatbotComponent
           isMinimized={this.state.isChatMinimized}
           setChatMinimized={this.toggleChat}
+          // messageHistory={this.loadMessages()}
+          // saveMessages={this.saveMessages}
         />
       </div>
     );

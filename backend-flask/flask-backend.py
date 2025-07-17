@@ -9,6 +9,8 @@ from collections import defaultdict
 from typing import Dict, List
 import requests
 import json
+import time
+from openai import OpenAI
 
 # Load environment variables
 load_dotenv()
@@ -16,26 +18,61 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Rate limiting configuration
-WINDOW_SIZE = 15 * 60  # 15 minutes in seconds
-MAX_REQUESTS = 15
-request_log: Dict[str, List[datetime]] = defaultdict(list)
+# Docs
+SYSTEM_PROMPT = open('src/AssistantPrompt.md', 'r').read()
+
+#AI
+AI_CLIENT = OpenAI(api_key=os.getenv('OPENAI_KEY'))
+
+# ─── Configuration ─────────────────────────────────────────────
+WINDOW_SIZE            = 15 * 60        # 15 minutes in seconds
+MAX_15M_REQUESTS       = 15             # per-IP sliding window
+MAX_IP_DAILY_REQUESTS  = 20           # per-IP calendar day
+MAX_GLOBAL_DAILY_REQS  = 200           # global calendar day across all IPs
+
+# ─── In-memory logs ────────────────────────────────────────────
+request_log_15m   = defaultdict(list)   # ip → [timestamps…]
+request_log_ipday = defaultdict(list)   # ip → [timestamps…]
+global_log_day    = []                  # [timestamps…] for all IPs today
 
 def rate_limiter():
-    ip = request.remote_addr
+    ip  = request.remote_addr
     now = datetime.now()
-    
-    # Clean up old requests
-    request_log[ip] = [time for time in request_log[ip] 
-                      if now - time < timedelta(seconds=WINDOW_SIZE)]
-    
-    # Check if too many requests
-    if len(request_log[ip]) >= MAX_REQUESTS:
+
+    # 1) Prune your per-IP 15m log
+    cutoff_15m = now - timedelta(seconds=WINDOW_SIZE)
+    request_log_15m[ip] = [ts for ts in request_log_15m[ip] if ts > cutoff_15m]
+
+    # 2) Prune your per-IP daily log (keep only today’s entries)
+    request_log_ipday[ip] = [ts for ts in request_log_ipday[ip] if ts.date() == now.date()]
+
+    # 3) Prune your global daily log (only keep today’s)
+    global_log_day[:] = [ts for ts in global_log_day if ts.date() == now.date()]
+
+    # 4) Check per-IP 15-minute limit
+    if len(request_log_15m[ip]) >= MAX_15M_REQUESTS:
         return jsonify({
-            'error': 'Too many requests. Please try again later.'
+            'response': 'Too many requests in 15 minutes. Try again shortly.'
         }), 429
-    
-    request_log[ip].append(now)
+
+    # 5) Check per-IP daily limit
+    if len(request_log_ipday[ip]) >= MAX_IP_DAILY_REQUESTS:
+        return jsonify({
+            'response': 'You’ve hit your daily limit. Please try again tomorrow.'
+        }), 429
+
+    # 6) Check global daily limit
+    if len(global_log_day) >= MAX_GLOBAL_DAILY_REQS:
+        return jsonify({
+            'response': 'Service is busy today. Please try again tomorrow.'
+        }), 429
+
+    # 7) All clear → record this request in all logs
+    request_log_15m[ip].append(now)
+    request_log_ipday[ip].append(now)
+    global_log_day.append(now)
+
+    # continue processing…
     return None
 
 def send_email(contact_data):
@@ -97,6 +134,21 @@ def get_gh_repos(username):
         return None
     
 
+def get_ai_response(history,input):
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    for m in history:
+        if m['type'] == 'user':
+            messages.append({"role": "user", "content": m['message']}) 
+        elif m['type'] == 'bot':
+            messages.append({"role": "assistant", "content": m['message']})
+
+    messages.append({"role": "user", "content": input})
+
+    response = AI_CLIENT.chat.completions.create(model="gpt-4o", messages=messages)
+
+    return response.choices[0].message.content
+    
+
 @app.route('/api/health', methods=['GET'])
 @app.route('/health', methods=['GET'])
 def health():
@@ -152,6 +204,17 @@ def gh_repos():
     repos = get_gh_repos(username)
     return jsonify({'repos': repos})
 
+@app.route('/api/ai-response', methods=['POST'])
+def ai_response():
+    rate_limit_response = rate_limiter()
+    if rate_limit_response:
+        return rate_limit_response
+    
+    data = request.get_json()
+    messages = data.get('messages')
+    input = data.get('input')
+    response = get_ai_response(messages,input)
+    return jsonify({'response': response})
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 3001))

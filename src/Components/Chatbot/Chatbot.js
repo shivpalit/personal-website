@@ -11,10 +11,8 @@ const ChatbotComponent = ({ isMinimized, setChatMinimized }) => {
   return (
     <div className={`${styles.chatbotContainer} ${isMinimized ? styles.minimized : ''}`}>
       <div className={styles.chatbotHeader} onClick={() => setChatMinimized(!isMinimized)}>
-        <span><i className="fa fa-comments"></i></span>
-          {/* <button className={styles.minimizeButton}>
-            {isMinimized ? '' : '-'}
-          </button> */}
+          <img src="https://www.svgrepo.com/download/315660/bot.svg" alt="chat" width="32" height="32" style={{filter: 'invert(1)'}} />
+          {/* <img src="https://www.svgrepo.com/download/339963/chat-bot.svg" alt="chat" width="32" height="32" style={{filter: 'invert(1)'}} /> */}
       </div>
       
       <div style={{ display: isMinimized ? 'none' : 'block' }} className={styles.chatbotContent}>
@@ -22,6 +20,8 @@ const ChatbotComponent = ({ isMinimized, setChatMinimized }) => {
           config={config}
           messageParser={MessageParser}
           actionProvider={ActionProvider}
+          // messageHistory={messageHistory}
+          // saveMessages={saveMessages}
         />
       </div>
     </div>
