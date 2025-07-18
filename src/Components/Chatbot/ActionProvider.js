@@ -34,38 +34,51 @@ class ActionProvider {
   
 
   handleAIResponse(input, state) {
-
-    const loadingMsg = this.createChatBotMessage(<Loader />, 
-      {
-        id: 'loading'
-      }
-    );
+    // 0) validate
+    if (input == null || input.trim() === '') {
+      const promptMsg = this.createChatBotMessage(
+        'Oops—please type something before sending!'
+      );
+      this.updateChatbotState(promptMsg);
+      return;
+    }
+  
+    // 1) lock the UI
+    const inputEl = document.querySelector('.react-chatbot-kit-chat-input');
+    const sendBtn = document.querySelector('.react-chatbot-kit-chat-btn-send');
+    if (inputEl)  inputEl.disabled = true;
+    if (sendBtn)  sendBtn.disabled = true;
+  
+    // 2) show loading message
+    const loadingMsg = this.createChatBotMessage(<Loader />, { id: 'loading' });
     this.updateChatbotState(loadingMsg);
-
+  
+    // 3) fire the request
     const apiUrl = process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_API_URL + '/api/ai-response'
+      ? `${process.env.REACT_APP_API_URL}/api/ai-response`
       : 'http://localhost:80/api/ai-response';
-
+  
     fetch(apiUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ messages: state.messages, input: input })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: state.messages, input })
+    })
+      .then(r => r.json())
+      .then(data => {
+        const msg = this.createChatBotMessage(data.response);
+        this.updateChatbotState(msg, 'loading');
       })
-        .then(response => response.json())
-        .then(data => {
-          const message = this.createChatBotMessage(data.response);
-          this.updateChatbotState(message, 'loading');
-        })
-        .catch(error => { 
-          console.error('Error fetching AI response:', error);
-          const message = this.createChatBotMessage('Error fetching AI response:'+ error.message);
-          this.updateChatbotState(message, 'loading');
-        });
-
-      console.log(state.messages);
-    }
+      .catch(err => {
+        const errMsg = this.createChatBotMessage('Error: '+err.message);
+        this.updateChatbotState(errMsg, 'loading');
+      })
+      .finally(() => {
+        // 4) unlock the UI
+        if (inputEl) inputEl.disabled = false;
+        if (sendBtn) sendBtn.disabled = false;
+      });
+  }
+  
 
 
 

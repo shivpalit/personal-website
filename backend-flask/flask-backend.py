@@ -144,7 +144,7 @@ def get_ai_response(history,input):
 
     messages.append({"role": "user", "content": input})
 
-    response = AI_CLIENT.chat.completions.create(model="gpt-4o", messages=messages)
+    response = AI_CLIENT.chat.completions.create(model="gpt-4o", messages=messages,max_tokens=128)
 
     return response.choices[0].message.content
     
