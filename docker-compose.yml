@@ -26,24 +26,24 @@ services:
     networks:
       - personal-website-network
 
-  # Development service (React dev server with hot-reloading)
-  personal-website-dev:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    container_name: personal-website-dev
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-    volumes:
-      - .:/app
-      - /app/node_modules
-    networks:
-      - personal-website-network
+  # # Development service (React dev server with hot-reloading)
+  # personal-website-dev:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   container_name: personal-website-dev
+  #   ports:
+  #     - "3000:3000"
+  #   restart: unless-stopped
+  #   environment:
+  #     - NODE_ENV=development
+  #     - CHOKIDAR_USEPOLLING=true
+  #     - WATCHPACK_POLLING=true
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #   networks:
+  #     - personal-website-network
 
   backend-flask:
     build:
