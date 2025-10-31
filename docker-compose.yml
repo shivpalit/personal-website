@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx:latest
@@ -26,8 +24,8 @@ services:
     networks:
       - personal-website-network
 
-  # # Development service (React dev server with hot-reloading)
-  # personal-website-dev:
+  # Development service (React dev server with hot-reloading)
+  # personal-website:
   #   build:
   #     context: .
   #     dockerfile: Dockerfile.dev

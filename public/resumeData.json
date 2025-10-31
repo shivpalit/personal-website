@@ -3,7 +3,7 @@
     "name":"Shiv Palit",
     "description":"I am a data scientist with professional experience building large-scale ML/AI solutions, developing data platforms, and driving customer experience analytics across media, consulting, and investment sectors",
     "image":"profilepic.jpeg",
-    "bio":"I'm a data scientist with a product mindset, passionate about building scalable AI/ML solutions that unlock insights and drive impact. Currently at Warner Bros. Discovery, I lead the development of machine learning models and data platforms that power customer experience analytics across global streaming brands. I enjoy working at the intersection of data engineering, modeling, and product strategy - translating messy real-world problems into clean, efficient systems.\n\nMy primary toolkit includes Python, Docker, and AWS. I'm especially comfortable working with LLMs, clustering & classification algorithms, and streamlining complex pipelines. I love designing intuitive tools that make data accessible to everyone, from analysts to executives. \n\nCurious by nature and collaborative by default, I thrive in fast-paced environments where I can work cross-functionally, mentor others, and continuously learn. Whether it's scaling up a data platform or experimenting with a new model architecture, I'm always looking for ways to make data more actionable and impactful.",
+    "bio":"I'm a data scientist with a product mindset, passionate about building scalable AI/ML solutions that unlock insights and drive impact. Currently at Warner Bros. Discovery, I lead the development of data platforms that power customer experience analytics across global streaming brands. I enjoy working at the intersection of data engineering, modeling, and product strategy - translating messy real-world problems into clean, efficient systems.\n\nMy primary toolkit includes Python, Docker, and AWS. I'm especially comfortable working with LLMs, clustering & classification algorithms, and streamlining complex pipelines. I love designing intuitive tools that make data accessible to everyone, from analysts to executives. \n\nCurious by nature and collaborative by default, I thrive in fast-paced environments where I can work cross-functionally, mentor others, and continuously learn. Whether it's scaling up a data platform or experimenting with a new model architecture, I'm always looking for ways to make data more actionable and impactful.",
     "contactmessage":"To learn more about me, please reach out!",
     "email": "shivpalit@gmail.com",
     "phone": "912-334-6950",
@@ -36,13 +36,13 @@
         "school":"Johns Hopkins University",
         "degree":"M.S. in Data Science",
         "graduated":"2022 - 2025",
-        "description":"<strong>Relevant Coursework:</strong> Data Engineering Principles & Practice, Graph Theory, Information Retrieval, Intro to Machine Learning, Probability & Stochastic Processes, Statistical Models & Regression"
+        "description":"<strong>Relevant Coursework:</strong> Data Engineering Principles & Practice, Graph Theory, Information Retrieval, Intro to Machine Learning, Intro to Optimization, Probability & Stochastic Processes, Statistical Models & Regression"
       },
       {
         "school":"Davidson College",
         "degree":"B.A. in Economics, Minor in Data Science",
         "graduated":"2015 - 2019",
-        "description":"<strong>Relevant Coursework:</strong> Applied Research Design & Data Analysis, Data Science, Data Structures, Econometrics, Financial Economics, Macroeconomics, Microeconomics, Programming & Problem Solving, Statistics & Basic Econometrics"
+        "description":"<strong>Relevant Coursework:</strong> Applied Research Design & Data Analysis, Data Science, Data Structures, Econometrics, Financial Economics, Macroeconomics, Microeconomics, Programming & Problem Solving"
       }
     ],
     "work":[
@@ -62,7 +62,7 @@
         "company": "Pura Vida Investments",
         "title": "Data Science Engineer",
         "years": "August 2020 - October 2021",
-        "description": "Engineered automated ETL pipelines and analytics dashboards processing 100K+ daily data points from 25+ alternative sources, saving analysts 6 hours daily. Developed clustering algorithms and sentiment analysis tools to identify trading patterns and track public opinion on portfolio companies. Created proprietary Bloomberg application for analyzing forward valuation metrics and monitoring business activity through non-traditional data sources."
+        "description": "Engineered data pipelines and analytics dashboards processing 100K+ daily data points from 25+ alternative sources, saving analysts 6 hours daily. Developed clustering algorithms and sentiment analysis tools to identify trading patterns and track public opinion on portfolio companies. Created proprietary Bloomberg application for analyzing forward valuation metrics and monitoring business activity through non-traditional data sources."
       }
     ],
     "certifications":[
