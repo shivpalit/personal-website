@@ -218,10 +218,10 @@ class Contact extends Component {
               <div className="widget widget_contact">
                 <h4>Contact Details</h4>
                 <p className="address">
-                  {name}
-                  <br />
-                  {phone}
-                  <br />
+                  {/* {name} */}
+                  {/* <br />
+                  {phone} */}
+                  {/* <br /> */}
                   {email}
                 </p>
               </div>
