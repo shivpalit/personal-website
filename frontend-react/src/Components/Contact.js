@@ -50,7 +50,7 @@ class Contact extends Component {
 
     const apiUrl = process.env.NODE_ENV === 'production'
       ? process.env.REACT_APP_API_URL + '/contact'  
-      : 'http://localhost:80/contact';
+      : 'http://localhost:80/api/contact';
 
     try {
       const response = await fetch(apiUrl, {
