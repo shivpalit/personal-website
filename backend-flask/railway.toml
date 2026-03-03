@@ -1,0 +1,16 @@
+# Railway config for the Flask backend service
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+# Railway automatically injects PORT; the Dockerfile uses ${PORT:-3001}.
+# Set these environment variables in the Railway dashboard:
+#   OPENAI_KEY
+#   AWS_ACCESS_KEY_ID
+#   AWS_SECRET_ACCESS_KEY
+#   AWS_REGION
+
+[deploy]
+healthcheckPath = "/health"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

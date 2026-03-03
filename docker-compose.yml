@@ -17,10 +17,10 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-      - REACT_APP_API_URL=https://shivpalit.com
+      - REACT_APP_API_URL=https://www.shivpalit.com
     container_name: personal-website
     environment:
-      - REACT_APP_API_URL=https://shivpalit.com
+      - REACT_APP_API_URL=https://www.shivpalit.com
     networks:
       - personal-website-network
 

@@ -1,0 +1,14 @@
+# Railway config for the React frontend service
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+# REACT_APP_API_URL must be set as a Railway environment variable on this
+# service so it is injected as a Docker build arg at image build time.
+# Set it to the public URL of the backend-flask Railway service, e.g.:
+#   REACT_APP_API_URL=https://backend-flask-production-xxxx.up.railway.app
+
+[deploy]
+healthcheckPath = "/"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
