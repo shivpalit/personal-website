@@ -149,12 +149,11 @@ def get_ai_response(history,input):
     return response.choices[0].message.content
     
 
-@app.route('/api/health', methods=['GET'])
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({'status': 'healthy'})
 
-@app.route('/api/contact', methods=['POST'])
+@app.route('/contact', methods=['POST'])
 def contact():
     # Check rate limit
     rate_limit_response = rate_limiter()
@@ -197,14 +196,14 @@ def contact():
             'error': 'Failed to send email. Please try again later.'
         }), 500
 
-@app.route('/api/gh-repos', methods=['POST'])
+@app.route('/gh-repos', methods=['POST'])
 def gh_repos():
     data = request.get_json()
     username = data.get('username')
     repos = get_gh_repos(username)
     return jsonify({'repos': repos})
 
-@app.route('/api/ai-response', methods=['POST'])
+@app.route('/ai-response', methods=['POST'])
 def ai_response():
     rate_limit_response = rate_limiter()
     if rate_limit_response:

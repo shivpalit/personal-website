@@ -55,7 +55,7 @@ class ActionProvider {
   
     // 3) fire the request
     const apiUrl = process.env.NODE_ENV === 'production'
-      ? `${process.env.REACT_APP_API_URL}/api/ai-response`
+      ? `${process.env.REACT_APP_API_URL}/ai-response`
       : 'http://localhost:80/api/ai-response';
   
     fetch(apiUrl, {

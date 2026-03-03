@@ -12,36 +12,36 @@ services:
       - personal-website-network
 
   # Production service (nginx serving built files)
-  personal-website:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-      - REACT_APP_API_URL=https://shivpalit.com
-    container_name: personal-website
-    environment:
-      - REACT_APP_API_URL=https://shivpalit.com
-    networks:
-      - personal-website-network
-
-  # Development service (React dev server with hot-reloading)
   # personal-website:
   #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.dev
-  #   container_name: personal-website-dev
-  #   ports:
-  #     - "3000:3000"
-  #   restart: unless-stopped
+  #     context: ./frontend-react
+  #     dockerfile: Dockerfile
+  #     args:
+  #     - REACT_APP_API_URL=https://api.shivpalit.com
+  #   container_name: personal-website
   #   environment:
-  #     - NODE_ENV=development
-  #     - CHOKIDAR_USEPOLLING=true
-  #     - WATCHPACK_POLLING=true
-  #   volumes:
-  #     - .:/app
-  #     - /app/node_modules
+  #     - REACT_APP_API_URL=https://api.shivpalit.com
   #   networks:
   #     - personal-website-network
+
+  # Development service (React dev server with hot-reloading)
+  personal-website:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile.dev
+    container_name: personal-website-dev
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./frontend-react:/app
+      - /app/node_modules
+    networks:
+      - personal-website-network
 
   backend-flask:
     build:
