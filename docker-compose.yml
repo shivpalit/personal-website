@@ -14,7 +14,7 @@ services:
   # Production service (nginx serving built files)
   personal-website:
     build:
-      context: .
+      context: ./frontend-react
       dockerfile: Dockerfile
       args:
       - REACT_APP_API_URL=https://www.shivpalit.com
@@ -27,7 +27,7 @@ services:
   # Development service (React dev server with hot-reloading)
   # personal-website:
   #   build:
-  #     context: .
+  #     context: ./frontend-react
   #     dockerfile: Dockerfile.dev
   #   container_name: personal-website-dev
   #   ports:
@@ -38,7 +38,7 @@ services:
   #     - CHOKIDAR_USEPOLLING=true
   #     - WATCHPACK_POLLING=true
   #   volumes:
-  #     - .:/app
+  #     - ./frontend-react:/app
   #     - /app/node_modules
   #   networks:
   #     - personal-website-network
