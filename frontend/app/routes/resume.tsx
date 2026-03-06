@@ -86,7 +86,7 @@ const EDUCATION = [
       "Accounting",
       "Data Structures",
       "Data Science",
-      "Programming & Problem Solving",
+      // "Programming & Problem Solving",
     ],
   },
 ];
