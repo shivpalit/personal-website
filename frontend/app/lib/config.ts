@@ -10,8 +10,8 @@ type Project = {
 export const NAVIGATION = [
   { title: "Home", href: "/" },
   { title: "Projects", href: "/projects" },
-  { title: "Resume", href: "/resume" },
   { title: "About", href: "/about" },
+  { title: "Resume", href: "/resume" },
 ];
 
 export const PROJECTS: Project[] = [
@@ -71,6 +71,7 @@ export const FOOTER_PAGES = [
   { title: "Home", href: "/" },
   { title: "Projects", href: "/projects" },
   { title: "About", href: "/about" },
+  { title: "Resume", href: "/resume" },
 ];
 
 export const SOCIALS = [

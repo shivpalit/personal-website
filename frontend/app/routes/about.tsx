@@ -12,7 +12,7 @@ export default function About() {
   return (
     <MaxWidthWrapper className="py-10 md:py-20">
       <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
-        <div className="flex-1">
+        <div className="max-w-xl">
           <h1 className="text-4xl font-bold mb-6">Hi 👋 I'm Shiv Palit</h1>
           <p className="text-muted-foreground mb-4">
             I'm a data scientist with a product mindset, passionate about building scalable AI/ML solutions that unlock insights and drive impact. Currently at Warner Bros. Discovery, I lead the development of data platforms that power customer experience analytics across global streaming brands. I enjoy working at the intersection of data engineering, modeling, and product strategy - translating messy real-world problems into clean, efficient systems.
@@ -28,7 +28,7 @@ export default function About() {
           <img
             src="/images/profilepic.jpeg"
             alt="Shiv Palit"
-            className="rounded-2xl w-56 md:w-64 object-cover"
+            className="rounded-2xl w-64 md:w-80 object-cover"
           />
         </div>
       </div>

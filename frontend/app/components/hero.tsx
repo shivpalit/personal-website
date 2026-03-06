@@ -17,11 +17,14 @@ export default function Hero() {
       </ContactForm>
 
       <h1 className="max-w-4xl text-4xl font-extrabold md:text-5xl lg:text-6xl">
-        Hi, I&apos;m a{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-pink-600">
           Data Scientist
         </span>{" "}
-        building AI-powered data platforms.
+        by Training.{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">
+          Product Manager
+        </span>{" "}
+        by Trade.
       </h1>
 
       <p className="mt-5 max-w-prose text-muted-foreground sm:text-lg">
